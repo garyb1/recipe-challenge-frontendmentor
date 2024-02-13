@@ -1,0 +1,326 @@
+/* Modern reset: https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/*
+Fonts
+*/
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('./assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format("truetype-variations");
+    font-weight: 400 700 900;
+}
+
+@font-face {
+    font-family: 'YoungSerif';
+    font-style: normal;
+    src: url('./assets/fonts/young-serif/YoungSerif-Regular.ttf') format("truetype");
+}
+
+/*
+Variables
+*/
+
+/* @link https://utopia.fyi/type/calculator?c=375,16,1.2,1440,16,1.25,5,0,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --step-0: clamp(1rem, 1rem + 0vi, 1rem);
+  --step-1: clamp(1.2rem, 1.1824rem + 0.0751vi, 1.25rem);
+  --step-2: clamp(1.44rem, 1.3969rem + 0.184vi, 1.5625rem);
+  --step-3: clamp(1.728rem, 1.6487rem + 0.3382vi, 1.9531rem);
+  --step-4: clamp(2.0736rem, 1.9441rem + 0.5526vi, 2.4414rem);
+  --step-5: clamp(2.4883rem, 2.2899rem + 0.8465vi, 3.0518rem);
+
+  --space-3xs: clamp(0.25rem, 0.25rem + 0vi, 0.25rem);
+  --space-2xs: clamp(0.5rem, 0.5rem + 0vi, 0.5rem);
+  --space-xs: clamp(0.75rem, 0.75rem + 0vi, 0.75rem);
+  --space-s: clamp(1rem, 1rem + 0vi, 1rem);
+  --space-m: clamp(1.5rem, 1.5rem + 0vi, 1.5rem);
+  --space-l: clamp(2rem, 2rem + 0vi, 2rem);
+  --space-xl: clamp(3rem, 3rem + 0vi, 3rem);
+  --space-2xl: clamp(4rem, 4rem + 0vi, 4rem);
+  --space-3xl: clamp(6rem, 6rem + 0vi, 6rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.162rem + 0.3756vi, 0.5rem);
+  --space-2xs-xs: clamp(0.5rem, 0.412rem + 0.3756vi, 0.75rem);
+  --space-xs-s: clamp(0.75rem, 0.662rem + 0.3756vi, 1rem);
+  --space-s-m: clamp(1rem, 0.8239rem + 0.7512vi, 1.5rem);
+  --space-m-l: clamp(1.5rem, 1.3239rem + 0.7512vi, 2rem);
+  --space-l-xl: clamp(2rem, 1.6479rem + 1.5023vi, 3rem);
+  --space-xl-2xl: clamp(3rem, 2.6479rem + 1.5023vi, 4rem);
+  --space-2xl-3xl: clamp(4rem, 3.2958rem + 3.0047vi, 6rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, 0.6479rem + 1.5023vi, 2rem);
+
+  --gutter: var(--space-s-l);
+  --transition-base: 250ms ease;
+  --transition-movement: 200ms linear;
+  --transition-fade: 300ms ease;
+  --transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5);
+  --leading-standard: 1.5;
+
+  --font-base: "Outfit", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-sans;
+  --font-heading: "YoungSerif", Georgia, sans-serif;
+
+  --color-nutmeg: hsl(14, 45%, 36%);
+  --color-dark-raspberry: hsl(332, 51%, 32%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-rose-white: hsl(330, 100%, 98%);
+  --color-eggshell: hsl(30, 54%, 90%);
+  --color-light-grey: hsl(30, 18%, 87%);
+  --color-wenge-brown: hsl(30, 10%, 34%);
+  --color-dark-charcoal: hsl(24, 5%, 18%);
+
+  --border-radius: 1em;
+  --border-grey: 1px solid var(--color-light-grey); 
+}
+
+body {
+    font-family: var(--font-base);
+    font-size: var(--step-0);
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--color-dark-charcoal);
+    background-color: var(--color-eggshell)
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-size: var(--step-2);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-nutmeg);
+  line-height: 1;
+  font-family: var(--font-heading);
+  max-width: 20ch;
+}
+
+p,
+li {
+  max-width: 55ch;
+}
+
+li {
+  padding-block: var(--space-3xs-2xs);
+  padding-inline-start: var(--space-3xs-2xs);
+}
+
+ul, ol {
+  padding: 0 var(--space-xs-s);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr {
+  padding: var(--space-xs-s);
+  border-bottom: var(--border-grey);
+}
+
+hr {
+  border-top: var(--border-grey);
+}
+
+th, td, caption {
+  text-align: start;
+}
+
+th, td {
+  padding: var(--space-s);
+}
+
+td {
+  color: var(--color-nutmeg);
+  font-weight: bold;
+}
+
+img, .wrapper {
+  border-radius: var(--border-radius);
+}
+
+a {
+  color: currentcolor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline: 2px solid;
+  outline-offset: 0.3ch;
+}
+
+:target {
+  scroll-margin-top: 2ex;
+}
+
+footer {
+  text-align: center;
+  padding-block: var(--space-m);
+}
+
+main:focus {
+  outline: none;
+}
+
+::selection {
+  background: var(--color-dark);
+  color: var(--color-light);
+}
+
+::marker {
+  color: var(--color-nutmeg);
+  font-weight: bold;
+}
+
+.wrapper {
+  --gutter: var(--space-xs-s);
+  max-width: var(--wrapper-max-width, 90rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--gutter);
+  position: relative;
+}
+
+.container {
+  --wrapper-max-width: 50rem;
+  --gutter: 1.5em;
+  background-color: var(--color-white);
+}
+
+
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+[data-section="primary"] {
+  background-color: var(--color-rose-white);
+  padding: var(--space-s) var(--space-m);
+}
+
+[data-section="primary"] :is(h1, h2, h3) {
+  font-family: var(--font-base);
+  color: var(--color-dark-raspberry);
+  font-size: var(--step-2);
+}
+
+[data-section="primary"] :is(h1, h2, h3) {
+  margin-block: 0;
+}
+
+.attribution { 
+  text-align: center;  
+}
+
+@media (max-width: 375px) {
+  .wrapper {
+    --gutter: 0;
+  }
+
+  img {
+    border-radius: 0;
+  }
+
+  main, header {
+    padding-inline: var(--space-xs-s);
+  }
+}
