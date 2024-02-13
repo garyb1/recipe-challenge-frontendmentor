@@ -166,11 +166,17 @@ body {
     line-height: 1.5;
     font-weight: 400;
     color: var(--color-dark-charcoal);
-    background-color: var(--color-eggshell)
+    background-color: var(--color-eggshell);
 }
 
 h1 {
+  color: var(--color-dark-charcoal);
   font-size: var(--step-4);
+}
+
+h2, 
+h3 {
+  color: var(--color-nutmeg);
 }
 
 h2 {
@@ -184,7 +190,6 @@ h3 {
 h1,
 h2,
 h3 {
-  color: var(--color-nutmeg);
   line-height: 1;
   font-family: var(--font-heading);
   max-width: 20ch;
@@ -281,6 +286,7 @@ main:focus {
 }
 
 .container {
+  --flow-space: 2em;
   --wrapper-max-width: 50rem;
   --gutter: 1.5em;
   background-color: var(--color-white);
